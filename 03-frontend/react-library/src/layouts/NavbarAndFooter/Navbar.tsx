@@ -20,7 +20,7 @@ export const Navbar = () => {
                         </li>
 
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="search">Search Books</NavLink>
+                            <NavLink className="nav-link" to="/search">Search Books</NavLink>
                         </li>
                     </ul>
 
