@@ -1,4 +1,9 @@
+import {useOktaAuth} from "@okta/okta-react";
+import {Link} from "react-router-dom";
+
 export const Heros = () => {
+    const {authState} = useOktaAuth();
+
     return (
         <div>
             <div className="d-none d-lg-block">
@@ -11,9 +16,17 @@ export const Heros = () => {
                         <div className="m-lg-2">
                             <h1>What have you been reading? </h1>
                             <p className="lead">
-                                The library team would love to know what you have been reading. Whether it is to learn a new skill or grow within one, we will be able to provide the top content for you!
+                                The library team would love to know what you have been reading. Whether it is to learn a
+                                new skill or grow within one, we will be able to provide the top content for you!
                             </p>
-                            <a className="btn main-color btn-lg text-white" href="src/layouts/HomePage/components/Heros#">Sign up</a>
+
+                            {authState?.isAuthenticated ?
+                                <Link type="button" className="btn main-color btn-lg text-white"
+                                      to='search'>Explore top books</Link>
+                                :
+                                <Link className="btn main-color btn-lg text-white" to="/login">Sign up</Link>
+                            }
+
                         </div>
                     </div>
                 </div>
@@ -36,7 +49,7 @@ export const Heros = () => {
                 </div>
             </div>
 
-        {/*    Mobile Heros  */}
+            {/*    Mobile Heros  */}
             <div className="d-lg-none">
                 <div className="container">
                     <div className="m-2">
@@ -44,9 +57,17 @@ export const Heros = () => {
                         <div className="mt-2">
                             <h1>What have you been reading? </h1>
                             <p className="lead">
-                                The library team would love to know what you have been reading. Whether it is to learn a new skill or grow within one, we will be able to provide the top content for you!
+                                The library team would love to know what you have been reading. Whether it is to learn a
+                                new skill or grow within one, we will be able to provide the top content for you!
                             </p>
-                            <a className="btn main-color btn-lg text-white" href="src/layouts/HomePage/components/Heros#">Sign up</a>
+
+                            {authState?.isAuthenticated ?
+                                <Link type="button" className="btn main-color btn-lg text-white"
+                                      to='search'>Explore top books</Link>
+                                :
+                                <Link className="btn main-color btn-lg text-white" to="/login">Sign up</Link>
+                            }
+
                         </div>
                     </div>
 
